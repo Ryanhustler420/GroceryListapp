@@ -1,5 +1,6 @@
 package com.example.groceryappwithgupta.Activities;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
@@ -10,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.groceryappwithgupta.R;
 
@@ -20,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText groceryItem;
     private EditText quantity;
     private Button saveBtn;
+    private TextView addFirstText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +30,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        addFirstText = findViewById(R.id.firstAddText);
+        Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/Roboto-Thin.ttf");
+        addFirstText.setTypeface(typeface);
+
 
        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
