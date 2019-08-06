@@ -2,16 +2,24 @@ package com.example.groceryappwithgupta.Activities;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.example.groceryappwithgupta.R;
 
 public class MainActivity extends AppCompatActivity {
+
+    private AlertDialog.Builder dialogBuilder;
+    private AlertDialog dialog;
+    private EditText groceryItem;
+    private EditText quantity;
+    private Button saveBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,8 +32,7 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                createPopUpDialog();
             }
         });
     }
@@ -51,4 +58,32 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    private void createPopUpDialog() {
+        dialogBuilder = new AlertDialog.Builder(this);
+
+        View view = getLayoutInflater().inflate(R.layout.popup, null);
+
+        groceryItem = view.findViewById(R.id.popup_grocery_item_edit_text);
+        quantity = view.findViewById(R.id.popup_grocery_qty_edit_text);
+        saveBtn = view.findViewById(R.id.popup_save_btn);
+
+        dialogBuilder.setView(view);
+        dialog = dialogBuilder.create();
+        dialog.show();
+
+        // actions to be perform after clicking save button
+
+        saveBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // TODO: Save to db
+                // TODO: Go to next screen
+
+                saveGroceryToDB(view);
+            }
+        });
+    }
+
+    private void saveGroceryToDB(View v) { }
 }
