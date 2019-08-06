@@ -37,7 +37,7 @@ public class RecyclerViewAdaptor extends RecyclerView.Adapter<RecyclerViewAdapto
         Grocery grocery = groceriesItems.get(position);
 
         viewHolder.groceryItemName.setText(grocery.getName());
-        viewHolder.quantity.setText(grocery.getQuantity());
+        viewHolder.quantity.setText(String.valueOf(grocery.getQuantity()));
         viewHolder.dateAdded.setText(grocery.getDateItemAdded());
     }
 

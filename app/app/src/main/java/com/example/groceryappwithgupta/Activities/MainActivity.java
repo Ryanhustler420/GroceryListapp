@@ -1,5 +1,6 @@
 package com.example.groceryappwithgupta.Activities;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -118,5 +119,10 @@ public class MainActivity extends AppCompatActivity {
         db.addGrocery(grocery);
         Snackbar.make(v, "Item Saved!", Snackbar.LENGTH_LONG).show();
         Log.d("Item Added ID: ", String.valueOf(db.getGroceriesCount()));
+        dialog.dismiss();
+
+        // next activity
+
+        startActivity(new Intent(MainActivity.this, ListActivity.class));
     }
 }
