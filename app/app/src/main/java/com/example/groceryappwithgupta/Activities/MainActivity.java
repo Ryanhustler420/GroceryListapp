@@ -1,5 +1,6 @@
 package com.example.groceryappwithgupta.Activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -39,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         db = new DatabaseHandler(this);
+
+        // check db count and bypass activity
+        bypassActivity();
 
         addFirstText = findViewById(R.id.firstAddText);
         Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/Roboto-Thin.ttf");
@@ -124,5 +128,14 @@ public class MainActivity extends AppCompatActivity {
         // next activity
 
         startActivity(new Intent(MainActivity.this, ListActivity.class));
+    }
+
+    public void bypassActivity () {
+        // Checks if database has some item
+
+        if (db.getGroceriesCount() > 0) {
+            startActivity(new Intent(MainActivity.this, ListActivity.class));
+            finish(); // removes from stack! as simple as that
+        }
     }
 }
