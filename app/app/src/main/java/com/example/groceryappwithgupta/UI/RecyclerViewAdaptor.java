@@ -80,7 +80,7 @@ public class RecyclerViewAdaptor extends RecyclerView.Adapter<RecyclerViewAdapto
 
                     Intent intent = new Intent(context, DetailsActivity.class);
                     intent.putExtra("name", grocery.getName());
-                    intent.putExtra("quantity", grocery.getQuantity());
+                    intent.putExtra("quantity", "Qty:" + grocery.getQuantity());
                     intent.putExtra("id", grocery.getId());
                     intent.putExtra("date", grocery.getDateItemAdded());
 
