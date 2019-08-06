@@ -7,4 +7,6 @@
     <string name="popup_quantity_text">Quantity</string>
     <string name="popup_save_btn_text">Save</string>
     <string name="title_activity_list">ListActivity</string>
+    <string name="quantity">Quantity</string>
+    <string name="grocery_name">Grocery Name</string>
 </resources>
