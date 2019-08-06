@@ -2,4 +2,8 @@
     <string name="app_name">Grocery</string>
     <string name="action_settings">Settings</string>
     <string name="add_first_item">Add First Item</string>
+    <string name="popup_enter_grocery">Enter Grocery</string>
+    <string name="popup_enter_item_name">Enter Item Name</string>
+    <string name="popup_quantity_text">Quantity</string>
+    <string name="popup_save_btn_text">Save</string>
 </resources>

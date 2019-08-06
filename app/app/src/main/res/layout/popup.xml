@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/layout_id"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:padding="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="@string/popup_enter_grocery"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/popup_title"
+                android:textSize="18sp"
+                android:textStyle="italic"
+                android:layout_marginBottom="18dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:inputType="textMultiLine"
+                android:hint="@string/popup_enter_item_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/popup_grocery_item_edit_text"
+                android:layout_below="@id/popup_title"
+                />
+
+            <EditText
+                android:layout_marginTop="15dp"
+                android:inputType="number"
+                android:layout_below="@id/popup_grocery_item_edit_text"
+                android:id="@+id/popup_grocery_qty_edit_text"
+                android:layout_width="match_parent"
+                android:hint="@string/popup_quantity_text"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/popup_save_btn"
+                android:layout_below="@id/popup_grocery_qty_edit_text"
+                android:text="@string/popup_save_btn_text"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:background="@color/colorAccent"
+                />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>
