@@ -1,5 +1,6 @@
 package com.example.groceryappwithgupta.UI;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -11,6 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.groceryappwithgupta.Activities.DetailsActivity;
+import com.example.groceryappwithgupta.Data.DatabaseHandler;
 import com.example.groceryappwithgupta.Model.Grocery;
 import com.example.groceryappwithgupta.R;
 
@@ -20,6 +22,9 @@ public class RecyclerViewAdaptor extends RecyclerView.Adapter<RecyclerViewAdapto
 
     private Context context;
     private List<Grocery> groceriesItems;
+    private AlertDialog.Builder alertDialogBuilder;
+    private AlertDialog dialog;
+    private LayoutInflater inflater;
 
     public RecyclerViewAdaptor(Context ctx, List<Grocery> groceriesItems) {
         this.context = ctx;
@@ -97,13 +102,48 @@ public class RecyclerViewAdaptor extends RecyclerView.Adapter<RecyclerViewAdapto
 
                     break;
                 case R.id.list_row_delete_btn:
-
+                    int position = getAdapterPosition();
+                    Grocery grocery = groceriesItems.get(position);
+                    deleteItem(grocery.getId(), position);
                     break;
             }
         }
     }
 
-    public void deleteItem(int id) {
-        
+    private void deleteItem(final int id, final int adaptorPosition) {
+        // Create AlertDialog
+        alertDialogBuilder = new AlertDialog.Builder(context);
+        inflater = LayoutInflater.from(context);
+        View view = inflater.inflate(R.layout.confirmation_dialog, null);
+
+        Button noButton = view.findViewById(R.id.confirmNoButton);
+        Button yesButton = view.findViewById(R.id.confirmYesButton);
+
+        alertDialogBuilder.setView(view);
+        dialog = alertDialogBuilder.create();
+        dialog.show();
+
+        noButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                // close the dialog boc
+                dialog.dismiss();
+            }
+        });
+
+        yesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // delete the item
+                DatabaseHandler db = new DatabaseHandler(context);
+                db.deleteGrocery(id);
+
+                groceriesItems.remove(adaptorPosition);
+                notifyItemRemoved(adaptorPosition);
+
+                dialog.dismiss();
+            }
+        });
     }
 }
