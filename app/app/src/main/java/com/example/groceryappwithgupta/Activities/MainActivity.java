@@ -26,7 +26,6 @@ public class MainActivity extends HelperActivity {
     private EditText quantity;
     private Button saveBtn;
     private TextView addFirstText;
-    private DatabaseHandler db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,15 +37,14 @@ public class MainActivity extends HelperActivity {
         db = new DatabaseHandler(this);
 
         // check db count and bypass activity
-        bypassActivity();
+        byPassMainActivity();
 
         addFirstText = findViewById(R.id.firstAddText);
-        Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/Roboto-Thin.ttf");
-        addFirstText.setTypeface(typeface);
+        ModityFont(addFirstText);
 
 
        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+       fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 createPopUpDialog();
@@ -76,7 +74,6 @@ public class MainActivity extends HelperActivity {
                 if (!TextUtils.isEmpty(groceryItem.getText()) && !TextUtils.isEmpty(quantity.getText())) {
                     saveGroceryToDB(view);
                 }
-
                 // TODO: Go to next screen
             }
         });
@@ -102,14 +99,5 @@ public class MainActivity extends HelperActivity {
         // next activity
 
         startActivity(new Intent(MainActivity.this, ListActivity.class));
-    }
-
-    public void bypassActivity () {
-        // Checks if database has some item
-
-        if (db.getGroceriesCount() > 0) {
-            startActivity(new Intent(MainActivity.this, ListActivity.class));
-            finish(); // removes from stack! as simple as that
-        }
     }
 }
