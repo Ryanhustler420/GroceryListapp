@@ -71,7 +71,7 @@ public class RecyclerViewAdaptor extends RecyclerView.Adapter<RecyclerViewAdapto
         ViewHolder(View view, Context ctx) {
             super(view);
             context = ctx;
-
+            // TODO: modify text later
             groceryItemName = view.findViewById(R.id.list_row_cardView_name);
             quantity = view.findViewById(R.id.list_row_cardView_quantity); // this should be @int type
             dateAdded = view.findViewById(R.id.list_row_date_added);
