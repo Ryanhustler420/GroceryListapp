@@ -9,4 +9,7 @@
     <string name="title_activity_list">ListActivity</string>
     <string name="quantity">Quantity</string>
     <string name="grocery_name">Grocery Name</string>
+    <string name="are_you_sure">Are you sure ?</string>
+    <string name="confirm_no_btn_text">No</string>
+    <string name="confirm_yes_btn_text">Yes</string>
 </resources>

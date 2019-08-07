@@ -102,4 +102,8 @@ public class RecyclerViewAdaptor extends RecyclerView.Adapter<RecyclerViewAdapto
             }
         }
     }
+
+    public void deleteItem(int id) {
+        
+    }
 }

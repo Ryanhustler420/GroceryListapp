@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <RelativeLayout
+            android:padding="23dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/confirmTextAlert"
+                android:text="@string/are_you_sure"
+                android:layout_width="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:paddingTop="5dp"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/confirmNoButton"
+                android:background="@color/colorAccent"
+                android:text="@string/confirm_no_btn_text"
+                android:layout_below="@id/confirmTextAlert"
+                android:textColor="@android:color/white"
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/confirmYesButton"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:background="@android:color/holo_green_dark"
+                android:text="@string/confirm_yes_btn_text"
+                android:layout_alignBottom="@id/confirmNoButton"
+                android:textColor="@android:color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+</LinearLayout>
