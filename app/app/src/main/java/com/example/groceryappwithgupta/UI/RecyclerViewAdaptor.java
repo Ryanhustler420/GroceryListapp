@@ -1,5 +1,6 @@
 package com.example.groceryappwithgupta.UI;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -44,13 +45,14 @@ public class RecyclerViewAdaptor extends RecyclerView.Adapter<RecyclerViewAdapto
         return new ViewHolder(view, context);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewAdaptor.ViewHolder viewHolder, int position) {
         // this is where everything is bind together.
         Grocery grocery = groceriesItems.get(position);
 
         viewHolder.groceryItemName.setText(grocery.getName());
-        viewHolder.quantity.setText(String.valueOf(grocery.getQuantity()));
+        viewHolder.quantity.setText("Qty:" + grocery.getQuantity());
         viewHolder.dateAdded.setText(grocery.getDateItemAdded());
     }
 
@@ -147,7 +149,7 @@ public class RecyclerViewAdaptor extends RecyclerView.Adapter<RecyclerViewAdapto
                    db.updateGrocery(grocery);
                    notifyItemChanged(adaptorPosition, grocery);
                 } else {
-                    Snackbar.make(view, "add Grocery and Quantity", Snackbar.LENGTH_LONG).show();
+                    Snackbar.make(view, "Add Grocery and Quantity", Snackbar.LENGTH_LONG).show();
                 }
 
                 dialog.dismiss();

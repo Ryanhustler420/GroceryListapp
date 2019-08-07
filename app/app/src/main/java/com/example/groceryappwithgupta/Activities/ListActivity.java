@@ -45,6 +45,13 @@ public class ListActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        recyclerView = findViewById(R.id.recyclerViewID);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        groceryList = new ArrayList<>();
+        listItems = new ArrayList<>();
+
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,12 +61,13 @@ public class ListActivity extends AppCompatActivity {
         });
 
         db = new DatabaseHandler(this);
-        recyclerView = findViewById(R.id.recyclerViewID);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        initViewList();
+    }
 
-        groceryList = new ArrayList<>();
-        listItems = new ArrayList<>();
+    private void initViewList() {
+
+        groceryList.clear();
+        listItems.clear();
 
         // Get items from database
         groceryList = db.getAllGroceries();
@@ -77,7 +85,17 @@ public class ListActivity extends AppCompatActivity {
         recyclerViewAdaptor = new RecyclerViewAdaptor(this, listItems);
         recyclerView.setAdapter(recyclerViewAdaptor);
         recyclerViewAdaptor.notifyDataSetChanged(); // something has change. which will handle by recycleView we don't have to do anything
+    }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        if (db.getGroceriesCount() <= 0) {
+            startActivity(new Intent(ListActivity.this, MainActivity.class));
+            finish();
+        } else {
+            initViewList();
+        }
     }
 
     private void createPopUpDialog() {
@@ -123,10 +141,7 @@ public class ListActivity extends AppCompatActivity {
         Log.d("Item Added ID: ", String.valueOf(db.getGroceriesCount()));
 
         // reassigning listItems To recycleView
-        listItems.add(grocery);
-        recyclerViewAdaptor = new RecyclerViewAdaptor(this, listItems);
-        recyclerView.setAdapter(recyclerViewAdaptor);
-        recyclerViewAdaptor.notifyDataSetChanged();
+        initViewList();
 
         dialog.dismiss();
     }
