@@ -1,5 +1,6 @@
 package com.example.groceryappwithgupta.UI;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -15,6 +16,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.groceryappwithgupta.Activities.DetailsActivity;
+import com.example.groceryappwithgupta.Activities.ListActivity;
+import com.example.groceryappwithgupta.Activities.MainActivity;
 import com.example.groceryappwithgupta.Data.DatabaseHandler;
 import com.example.groceryappwithgupta.Model.Grocery;
 import com.example.groceryappwithgupta.R;
@@ -185,7 +188,16 @@ public class RecyclerViewAdaptor extends RecyclerView.Adapter<RecyclerViewAdapto
                 notifyItemRemoved(adaptorPosition);
 
                 dialog.dismiss();
+                bypassActivity(context);
             }
         });
+    }
+
+    private void bypassActivity (Context context) {
+        DatabaseHandler db = new DatabaseHandler(context);
+        if (db.getGroceriesCount() <= 0) {
+            context.startActivity(new Intent(context, MainActivity.class));
+            ((Activity)context).finish();
+        }
     }
 }
