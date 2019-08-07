@@ -67,7 +67,6 @@ public class RecyclerViewAdaptor extends RecyclerView.Adapter<RecyclerViewAdapto
         TextView dateAdded;
         Button editButton;
         Button deleteButton;
-        int each_Item_ID;
 
         ViewHolder(View view, Context ctx) {
             super(view);

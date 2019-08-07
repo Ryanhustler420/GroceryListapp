@@ -2,7 +2,6 @@ package com.example.groceryappwithgupta.Activities;
 
 import android.app.AlertDialog;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -15,7 +14,7 @@ import com.example.groceryappwithgupta.Data.DatabaseHandler;
 import com.example.groceryappwithgupta.Model.Grocery;
 import com.example.groceryappwithgupta.R;
 
-public class DetailsActivity extends AppCompatActivity {
+public class DetailsActivity extends HelperActivity {
 
     TextView itemName;
     TextView quantity;
